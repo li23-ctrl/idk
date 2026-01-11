@@ -1,0 +1,42 @@
+{
+  "manifest_version": 3,
+  "name": "The Rizzler",
+  "version": "1.0",
+  "description": "idk",
+  "permissions": ["commands", "activeTab", "scripting", "tabs", "storage"],
+  "host_permissions": [
+    "https://www.instagram.com/*"
+  ], 
+  "options_page": "options.html", 
+  "action": {
+    "default_title": "Export Messages",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "commands": {
+    "run-1": {
+      "suggested_key": { "default": "Ctrl+1" },
+      "description": "Select red"
+    },
+    "run-2": {
+      "suggested_key": { "default": "Ctrl+2" },
+      "description": "Select green"
+    },
+    "run-3": {
+      "suggested_key": { "default": "Ctrl+3" },
+      "description": "Select blue"
+    },
+    "run-special": {
+      "suggested_key": { "default": "Ctrl+Shift+K" },
+      "description": "Ask the rizzler for advice"
+    }
+  },
+  "content_scripts": [
+  {
+    "matches": ["*://www.instagram.com/direct/t/*"],
+    "js": ["popup.js"]
+  }
+]
+}
